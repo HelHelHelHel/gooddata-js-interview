@@ -6,10 +6,23 @@ import '@gooddata/react-components/styles/css/main.css';
 import { ColumnChart } from '@gooddata/react-components';
 
 const grossProfitMeasure = '/gdc/md/xms7ga4tf3g3nzucd8380o2bev8oeknp/obj/6877';
+
 const dateAttributeInMonths = '/gdc/md/xms7ga4tf3g3nzucd8380o2bev8oeknp/obj/2142';
 const dateAttribute = '/gdc/md/xms7ga4tf3g3nzucd8380o2bev8oeknp/obj/2180';
 
 class App extends Component {
+    constructor(props) {
+    super(props);
+        this.state = ;
+    
+        this.handleChange = this.handleChange.bind(this);
+        
+    }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+    
+
 
     getMonthFilter() {
         return {
@@ -17,8 +30,8 @@ class App extends Component {
                 dataSet: {
                     uri: dateAttribute
                 },
-                from: '2016-01-01',
-                to: '2016-01-31'
+                from: '2016-04-01',
+                to: '2016-04-30'
             }
 
         }
@@ -56,7 +69,7 @@ class App extends Component {
 
     renderDropdown() {
         return (
-            <select defaultValue="1">
+            <select value={this.state.value} onChange={this.handleChange}>
                 <option value="1">January</option>
                 <option value="2">February</option>
                 <option value="3">March</option>
